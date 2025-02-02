@@ -1,0 +1,49 @@
+.carouselSection {
+    position: relative;
+    margin-bottom: 70px;
+    & > .contentWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .carouselTitle {
+        font-size: 24px;
+        color: white;
+        font-weight: normal;
+    }
+}
+
+/* style.scss */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0.6; /* Make non-active slides slightly transparent */
+    transform: scale(0.8); /* Scale down non-active slides */
+  }
+  
+  .swiper-slide-active {
+    opacity: 1; /* Fully visible active slide */
+    transform: scale(1); /* Full scale for active slide */
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  }
+  
+  .imageWrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the slide */
+    border-radius: 10px; /* Add rounded corners if desired */
+  }
+  
