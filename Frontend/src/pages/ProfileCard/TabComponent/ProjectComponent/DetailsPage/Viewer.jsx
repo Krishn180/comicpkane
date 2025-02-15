@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { PacmanLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import products from "../../../../../assets/product"; // Importing products array
+import ProductCard from "../../../../../components/Product/ProductCard"; // Importing ProductCard component
 
 const Viewer = () => {
   const queryParams = new URLSearchParams(window.location.search);
@@ -12,16 +14,8 @@ const Viewer = () => {
   const [showPrevIcon, setShowPrevIcon] = useState(false);
   const [showNextIcon, setShowNextIcon] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [showOverlay, setShowOverlay] = useState(false); // Overlay state
+  const [showOverlay, setShowOverlay] = useState(false);
   const navigate = useNavigate();
-
-  // Adding an array of products with details
-  const products = [
-    { id: 1, name: "Product 1", description: "Description of product 1" },
-    { id: 2, name: "Product 2", description: "Description of product 2" },
-    { id: 3, name: "Product 3", description: "Description of product 3" },
-    { id: 4, name: "Product 4", description: "Description of product 4" },
-  ];
 
   const nextImage = () => {
     if (currentIndex < images.length - 1) {
@@ -99,11 +93,10 @@ const Viewer = () => {
           }}
           onLoad={handleImageLoad}
           onError={() => setLoading(false)}
-          onClick={() => setShowOverlay(true)} // Show overlay on click
+          onClick={() => setShowOverlay(true)}
         />
       </div>
 
-      {/* Overlay for options */}
       {showOverlay && (
         <div
           style={{
@@ -122,36 +115,12 @@ const Viewer = () => {
           }}
           onClick={() => setShowOverlay(false)}
         >
-          <div
-            style={{
-              backgroundColor: "#222",
-              padding: "20px",
-              borderRadius: "8px",
-              textAlign: "center",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>{products[currentIndex]?.name}</h2> {/* Product name */}
-            <p>{products[currentIndex]?.description}</p> {/* Product description */}
-            <button
-              style={{
-                backgroundColor: "orange",
-                color: "#fff",
-                border: "none",
-                padding: "10px 20px",
-                cursor: "pointer",
-                borderRadius: "5px",
-                fontSize: "16px",
-              }}
-              onClick={() => navigate("/checkout")}
-            >
-              Purchase
-            </button>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+            <ProductCard product={products[currentIndex]} />
           </div>
         </div>
       )}
 
-      {/* Previous Image Button */}
       {showPrevIcon && currentIndex > 0 && (
         <div
           onClick={prevImage}
@@ -172,7 +141,6 @@ const Viewer = () => {
         </div>
       )}
 
-      {/* Next Image Button */}
       {showNextIcon && (
         <div
           onClick={nextImage}

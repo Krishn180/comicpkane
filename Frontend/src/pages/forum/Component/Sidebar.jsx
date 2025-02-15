@@ -48,13 +48,10 @@ const Sidebar = () => {
           <FaStar className="icon" /> Favorites
         </Link>
       </div>
-
+{/* 
       <div className="sidebar-section">
         <h3>Communities</h3>
-        {/* Check if there was an error fetching communities */}
         {error && <p className="error-message">{error}</p>}
-
-        {/* Map over communities and display them dynamically */}
         {communities.length > 0 ? (
           communities.map((community) => (
             <Link
@@ -69,13 +66,9 @@ const Sidebar = () => {
           <p>Loading communities...</p>
         )}
       </div>
-
-      {/* Add the Create Community button */}
       <div className="create-community-btn">
         <button onClick={toggleModal}>Create Community</button>
-      </div>
-
-      {/* Modal to create a community */}
+      </div> */}
       {isModalOpen && <CreateCommunityModal closeModal={toggleModal} />}
     </div>
   );

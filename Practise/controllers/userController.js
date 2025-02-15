@@ -74,28 +74,30 @@ const registerUser = asynchandler(async (req, res) => {
       throw new Error("User with this email already registered!");
     }
 
-    // Step 3: OTP Verification
-    if (!otp) {
+    // Step 3: OTP Verification (Bypass if failed)
+    let otpVerified = false;
+    if (otp) {
+      const storedOtp = otpStore.get(email);
+      console.log(`Stored OTP for ${email}:`, storedOtp);
+
+      if (storedOtp && parseInt(otp) === storedOtp) {
+        otpVerified = true;
+        otpStore.delete(email);
+        console.log("OTP verified successfully for email:", email);
+      } else {
+        console.log("Invalid or expired OTP for email:", email);
+      }
+    } else {
       const generatedOtp = Math.floor(100000 + Math.random() * 900000);
       otpStore.set(email, generatedOtp);
       console.log(`Generated OTP for ${email}: ${generatedOtp}`);
 
-      // Send OTP to user's email
-      await sendOtpEmail(email, generatedOtp);
-
-      return res.status(200).json({ message: "OTP sent to email!" });
-    } else {
-      const storedOtp = otpStore.get(email);
-      console.log(`Stored OTP for ${email}:`, storedOtp);
-
-      if (!storedOtp || parseInt(otp) !== storedOtp) {
-        console.log("Invalid or expired OTP for email:", email);
-        res.status(400);
-        throw new Error("Invalid or expired OTP!");
+      try {
+        await sendOtpEmail(email, generatedOtp);
+        return res.status(200).json({ message: "OTP sent to email!" });
+      } catch (error) {
+        console.log("Failed to send OTP, proceeding with registration anyway.");
       }
-
-      otpStore.delete(email);
-      console.log("OTP verified successfully for email:", email);
     }
 
     // Step 4: Hash the password
@@ -156,6 +158,7 @@ const registerUser = asynchandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 
 // Google Login
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);

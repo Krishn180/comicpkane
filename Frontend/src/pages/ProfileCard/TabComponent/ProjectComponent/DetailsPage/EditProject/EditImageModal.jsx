@@ -16,6 +16,7 @@ import {
 import { AiOutlineClose } from "react-icons/ai"; // Import Close icon from react-icons
 import axios from "axios";
 import { toast } from "react-toastify";
+import "./EditImageModal.scss";
 
 const EditImageUpdate = ({
   imageModalOpen,

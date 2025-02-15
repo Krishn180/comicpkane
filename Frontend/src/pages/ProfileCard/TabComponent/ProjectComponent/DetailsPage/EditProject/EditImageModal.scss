@@ -1,0 +1,109 @@
+/* EditImageModal.scss */
+
+/* Modal Styles */
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #1a1a1b;
+    border-radius: 8px;
+    box-shadow: 24;
+    padding: 16px;
+    color: #d7dadc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .modal-container-small {
+    width: 360px;
+  }
+  
+  /* Close Icon Styles */
+  .close-icon {
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+    right: 10px;
+    color: white;
+    background-color: #343536;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    
+    &:hover {
+      background-color: #818384;
+    }
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    color: #d7dadc;
+    margin-bottom: 16px;
+  }
+  
+  /* Image Preview Styles */
+  .image-preview-container {
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  .selected-image-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .remove-preview-tooltip {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff4500;
+    background-color: #1a1a1b;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    
+    &:hover {
+      background-color: #333;
+    }
+  }
+  
+  /* File Input Styles */
+  .file-input {
+    margin: 10px 0;
+    color: #818384;
+  }
+  
+  /* Add Image Button Styles */
+  .add-image-button {
+    background-color: #ff4500;
+    color: #fff;
+    
+    &:hover {
+      background-color: #cc3700;
+    }
+    margin-top: 16px;
+  }
+  
+  /* Dialog Styles */
+  .dialog-container {
+    padding: 20px;
+  }
+  
+  .dialog-title {
+    color: #d7dadc;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  

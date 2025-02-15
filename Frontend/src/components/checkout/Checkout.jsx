@@ -1,119 +1,47 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "./Checkout.scss";
 
-const Checkout = ({ products = [] }) => {
-  const [selectedProducts, setSelectedProducts] = useState(products);
-  const navigate = useNavigate();
+const Checkout = () => {
+  const location = useLocation(); // Access the state passed via navigate
+  const { product } = location.state || {}; // Destructure product from state
 
-  const calculateTotal = () => {
-    return selectedProducts
-      .reduce((total, product) => {
-        const price = parseFloat(
-          product.price?.replace("$", "") || "0" // Fallback to 0 if price is invalid
-        );
-        return total + price;
-      }, 0)
-      .toFixed(2);
+  // Dummy user data
+  const user = {
+    name: "John Doe",
+    address: "1234 Main Street, City, Country",
+    points: 120, // Points the user has earned
   };
 
-  const handleRemove = (id) => {
-    setSelectedProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== id)
-    );
-  };
+  // Calculate discount based on points (for example: 1 point = ₹1 discount)
+  const discount = user.points;
 
-  const handleCompletePurchase = () => {
-    if (selectedProducts.length === 0) {
-      alert("Your cart is empty. Add items to complete the purchase.");
-      return;
-    }
-    alert("Purchase completed!");
-    navigate("/thank-you");
-  };
+  if (!product) {
+    return <p>No product data found!</p>;
+  }
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#f8f8f8",
-        minHeight: "100vh",
-      }}
-    >
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Checkout</h1>
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          backgroundColor: "#fff",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          borderRadius: "12px",
-          overflow: "hidden",
-        }}
-      >
-        {selectedProducts.length > 0 ? (
-          selectedProducts.map((product) => (
-            <div
-              key={product.id}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "15px 20px",
-                borderBottom: "1px solid #eee",
-              }}
-            >
-              <div>
-                <h3 style={{ margin: 0, fontSize: "16px" }}>{product.name}</h3>
-                <p style={{ margin: 0, fontSize: "14px", color: "#666" }}>
-                  {product.price}
-                </p>
-              </div>
-              <button
-                style={{
-                  padding: "5px 10px",
-                  backgroundColor: "red",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                }}
-                onClick={() => handleRemove(product.id)}
-              >
-                Remove
-              </button>
-            </div>
-          ))
-        ) : (
-          <p style={{ padding: "20px", textAlign: "center", color: "#666" }}>
-            Your cart is empty. Add items to proceed.
-          </p>
-        )}
-        <div
-          style={{
-            padding: "20px",
-            textAlign: "right",
-            borderTop: "1px solid #eee",
-          }}
-        >
-          <h3>Total: ${calculateTotal()}</h3>
-          <button
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "green",
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "16px",
-              marginTop: "10px",
-            }}
-            onClick={handleCompletePurchase}
-          >
-            Complete Purchase
-          </button>
+    <div className="checkout-container">
+      <h1>Checkout</h1>
+      <div className="checkout-details">
+        <h3>Product Title: {product.title}</h3>
+        <p>Category: {product.category}</p>
+        <p>Price: ₹{product.price}</p>
+        <img
+          src={product.image}
+          alt={product.title}
+          className="checkout-product-image"
+        />
+
+        <div className="user-info">
+          <h4>User Information</h4>
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Address:</strong> {user.address}</p>
+          <p><strong>Points Earned:</strong> {user.points}</p>
+          <p><strong>Discount Available:</strong> ₹{discount}</p>
         </div>
+
+        <button className="confirm-purchase-button">Confirm Purchase</button>
       </div>
     </div>
   );
