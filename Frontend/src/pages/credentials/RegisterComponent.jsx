@@ -39,7 +39,7 @@ export default function RegisterComponent({ showModal, handleClose }) {
 
       setLoading(true); // Start loading spinner
       const response = await axios.post(
-        `http://localhost:5000/api/users/register`,
+        `https://api.comicplane.site/api/users/register`,
         {
           email: credentials.email,
         }
@@ -101,7 +101,7 @@ export default function RegisterComponent({ showModal, handleClose }) {
 
       // Verify OTP and register the user
       const response = await axios.post(
-        `http://localhost:5000/api/users/register`,
+        `https://api.comicplane.site/api/users/register`,
         {
           ...credentials,
           otp,
@@ -128,7 +128,7 @@ export default function RegisterComponent({ showModal, handleClose }) {
 
       // Send the Google token to your backend for verification and login
       const response = await axios.post(
-        `http://localhost:5000/api/users/google-login`,
+        `https://api.comicplane.site/api/users/google-login`,
         {
           token: googleToken,
         }
