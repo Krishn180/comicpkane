@@ -7,6 +7,7 @@ import Section2 from "../../AboutCard/Section2";
 import Navbar from "../../AboutCard/Navbar";
 import LandingHeroSection from "../../AboutCard/LandingHeroSection";
 import Curated from './curated/Curated';
+import ComicSubmissionForm from "../../components/SubmitForm/SubmitForm";
 
 const Landing = () => {
   return (
@@ -42,6 +43,7 @@ const Landing = () => {
       <br />
       <br />
       <br />
+      <ComicSubmissionForm/>
     </div>
   );
 };
