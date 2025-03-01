@@ -1,58 +1,58 @@
-.form-container {
-    max-width: 600px;  // Increased width
-    margin: auto;
-    padding: 25px;
-    background: #2c2c2c; // Darker background
-    border-radius: 10px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-    color: #ffffff; // Light text for contrast
-}
+// .form-container {
+//     max-width: 600px;  // Increased width
+//     margin: auto;
+//     padding: 25px;
+//     background: #2c2c2c; // Darker background
+//     border-radius: 10px;
+//     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+//     color: #ffffff; // Light text for contrast
+// }
 
-h2 {
-    text-align: center;
-    color: #ff6b6b; // Highlight color
-}
+// h2 {
+//     text-align: center;
+//     color: #ff6b6b; // Highlight color
+// }
 
-label {
-    display: block;
-    margin: 12px 0 6px;
-    font-weight: bold;
-}
+// label {
+//     display: block;
+//     margin: 12px 0 6px;
+//     font-weight: bold;
+// }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #444;
-    border-radius: 6px;
-    background: #3b3b3b;
-    color: white;
-}
+// input {
+//     width: 100%;
+//     padding: 12px;
+//     margin-bottom: 12px;
+//     border: 1px solid #444;
+//     border-radius: 6px;
+//     background: #3b3b3b;
+//     color: white;
+// }
 
-input::placeholder {
-    color: #bbb;
-}
+// input::placeholder {
+//     color: #bbb;
+// }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #ff6b6b; // Red button for contrast
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
+// button {
+//     width: 100%;
+//     padding: 12px;
+//     background: #ff6b6b; // Red button for contrast
+//     color: white;
+//     border: none;
+//     border-radius: 6px;
+//     cursor: pointer;
+//     font-size: 16px;
+//     font-weight: bold;
+//     transition: background 0.3s ease;
+// }
 
-button:hover {
-    background: #d62828;
-}
+// button:hover {
+//     background: #d62828;
+// }
 
-.message {
-    text-align: center;
-    color: #4caf50;
-    font-weight: bold;
-    margin-top: 10px;
-}
+// .message {
+//     text-align: center;
+//     color: #4caf50;
+//     font-weight: bold;
+//     margin-top: 10px;
+// }

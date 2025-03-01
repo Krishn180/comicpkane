@@ -43,7 +43,7 @@ const Landing = () => {
       <br />
       <br />
       <br />
-      <ComicSubmissionForm/>
+      {/* <ComicSubmissionForm/> */}
     </div>
   );
 };
