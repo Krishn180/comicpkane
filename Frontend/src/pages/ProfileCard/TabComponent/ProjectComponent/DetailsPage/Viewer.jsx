@@ -160,6 +160,24 @@ const Viewer = () => {
           <FaChevronRight size={30} />
         </div>
       )}
+
+      {/* Page Indicator */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          color: "#fff",
+          padding: "8px 16px",
+          borderRadius: "20px",
+          fontSize: "14px",
+          fontWeight: "bold",
+        }}
+      >
+        {currentIndex + 1} / {images.length}
+      </div>
     </div>
   );
 };
