@@ -47,7 +47,7 @@ const Checkout = () => {
         productPrice: product.price,
       };
 
-      const response = await axiosInstance.post("/confirm-purchase", purchaseData);
+      const response = await axiosInstance.post("https://api.comicplane.site/api/confirm-purchase", purchaseData);
 
       if (response.status === 200) {
         const whatsappNumber = "+918249071144"; // Replace with your WhatsApp number
