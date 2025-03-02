@@ -27,7 +27,7 @@ export default function LoginComponent() {
 
       const response = await axios.post(
         // `http://localhost:5000/api/users/login`,
-       `${apiBaseUrl}/api/users/login`,
+       `${apiBaseUrl}/users/login`,
         {
           email: credentials.email,
           password: credentials.password,
